@@ -9,6 +9,9 @@ interface TodoItemProps {
     complited: boolean;
     // некоторые компоненты могут принимать чилднеры
     children: React.ReactNode;
+
+    // описываем типы входящих стилей
+    style?: React.CSSProperties;
 }
 
 const TodoItem: React.FC<TodoItemProps> = ({ id, title, complited, children }) => {
@@ -34,12 +37,16 @@ export {TodoItem};
 // TodoItem.propTypes 
 
 // пример 2
-const TodoItem2 = ({ id, title, complited }: TodoItemProps) => {
+const TodoItem2 = ({ id, title, complited, style = {} }: TodoItemProps) => {
     // FC - Function Component это компонент является дженериком, по умолчанию пустой объект
     // этот обоъект - это набор пропсов
 
     return (
-        <li>
+        <li style={{ color: 'red', backgroundColor: 'white', ...style}}>
+            {/* TS не позволит написать стиль с ошибкой */}
+            {/* стили можно передавать снаружи, через пропсы */}
+            {/* чтоы описать типы для передаваемых стилей снаружи, нужно навести курсор на атрибут 
+            и взять оттуда React.CSSProperties и указать как тип входяших стилей*/}
             <input type="checkbox" checked={complited}/>
             <span>{title}</span>
             <span>&times;</span>

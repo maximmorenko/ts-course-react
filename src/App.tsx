@@ -11,7 +11,9 @@ function App() {
                 {/* обязаны передать какото чилдрен */}
                 <></>
             </TodoItem>
-            <TodoItem2 id='222' title='second todo' complited={false}>
+            <TodoItem2 id='222' title='second todo' complited={false} style={{
+                border: '1px solid green'
+            }}>
                 <></>
             </TodoItem2>
         </div>
