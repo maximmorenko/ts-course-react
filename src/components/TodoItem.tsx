@@ -1,12 +1,16 @@
 import React from "react";
+import {Todo} from '../types';
 
 // пример 1
 // для типизации пропсов можно использовать как интерфейсы так и алиасы
 // в компонент передаем типы ка кдженерик
-interface TodoItemProps {
-    id: string;
-    title: string;
-    complited: boolean;
+interface TodoItemProps extends Todo{
+
+    // теперь интерфейс полусчил обоъект типов туду и можно здесь его удалить
+    // id: string;
+    // title: string;
+    // complited: boolean;
+
     // некоторые компоненты могут принимать чилднеры
     children: React.ReactNode;
 

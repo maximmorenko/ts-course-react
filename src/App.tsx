@@ -3,13 +3,8 @@ import React, {useState} from 'react';
 import {TodoItem, TodoItem2} from './components/TodoItem';
 import NewTodoForm from './components/NewTodoForm';
 import './App.css';
+import {Todo} from './types'
 
-
-type ITodo = {
-    title: string;
-    id: string;
-    complited: boolean;
-}
 
 function App() {
 
@@ -19,10 +14,17 @@ function App() {
     //const [todo, setTodo] = useState([]); // указав пустой массив по умолчанию 
     // получим never[] массив в котором никогда ничего не появится
     // поэтому нужно указать тип массива. Исполььзовать useState дженерик useState<string[]>([])
-    const [todo2, setTodo2] = useState<string[]>([]);
+    const [todo2, setTodo2] = useState<Todo[]>([]);
 
     // если по умолчанию нал но в дальнейшим мы хотим хотим типизировать как вассив объектов 
     //const [] = useState<ITodo | null>(null) // в этом случае нужно будет делать еще доп. проверки на null
+
+
+    const newTodo: Todo = {
+        title: text,
+        id: new Date().toString(),
+        complited: false,
+    }
 
 
     const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -30,7 +32,7 @@ function App() {
     }
 
     const addTodo = () => {
-        setTodo2([text, ...todo2]);
+        setTodo2([newTodo, ...todo2]);
         setText('');
     }
 
