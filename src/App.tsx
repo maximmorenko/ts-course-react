@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
 import {TodoItem, TodoItem2} from './components/TodoItem';
 import NewTodoForm from './components/NewTodoForm';
@@ -35,6 +35,13 @@ function App() {
         setTodo2([newTodo, ...todo2]);
         setText('');
     }
+
+    // юзефект должен ть всегда с явным ретерном и массивом зависимостей
+    useEffect(() => {
+        fetch('https://jsonplaceholder.typicode.com/todos')
+            .then(res => res.json()) //json по умолчанию это any
+            .then((data: Todo[]) => {setTodo2(data)}) //data тоже по умолчанию any, поэтому явно указываем тип для data
+    }, [])
 
     return (
         <div className="App">
