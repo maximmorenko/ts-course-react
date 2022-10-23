@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 
 import {TodoItem, TodoItem2} from './components/TodoItem';
-import NewTodoForm from './components/NewTodoForm';
+import {NewTodoForm} from './components/NewTodoForm';
 import './App.css';
 import {Todo} from './types'
 
@@ -9,7 +9,7 @@ import {Todo} from './types'
 function App() {
 
     // то что мы указываем по умолчанию во входных параметрах юзстейта типизирует наш стейт
-    const [text, setText] = useState(''); // ожидает строку, и setText навыходе теже выдаст строку
+    // const [text, setText] = useState(''); // ожидает строку, и setText навыходе теже выдаст строку
 
     //const [todo, setTodo] = useState([]); // указав пустой массив по умолчанию 
     // получим never[] массив в котором никогда ничего не появится
@@ -19,21 +19,18 @@ function App() {
     // если по умолчанию нал но в дальнейшим мы хотим хотим типизировать как вассив объектов 
     //const [] = useState<ITodo | null>(null) // в этом случае нужно будет делать еще доп. проверки на null
 
+    // const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+    //     setText(event.target.value) //то значение, которое мы вводим в форму
+    // }
 
-    const newTodo: Todo = {
-        title: text,
-        id: new Date().toString(),
-        complited: false,
-    }
-
-
-    const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setText(event.target.value) //то значение, которое мы вводим в форму
-    }
-
-    const addTodo = () => {
+    const addTodo = (text: string) => {
+        const newTodo: Todo = {
+            title: text,
+            id: new Date().toString(),
+            complited: false,
+        }
         setTodo2([newTodo, ...todo2]);
-        setText('');
+        // setText('');
     }
 
     // юзефект должен ть всегда с явным ретерном и массивом зависимостей
@@ -46,8 +43,8 @@ function App() {
     return (
         <div className="App">
             <NewTodoForm 
-                value={text}
-                onChange={handleInput}
+                // value={text}
+                // onChange={handleInput}
                 handleClick={addTodo}
             />
             {/* ТС ругается, ждет передачи пропсов */}
