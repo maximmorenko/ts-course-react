@@ -1,3 +1,4 @@
+import React from "react";
 import {useState} from 'react';
 
 import {Todo} from './types';
@@ -5,7 +6,7 @@ import NewTodoForm from './components/NewTodoForm'
 import TodoList from './components/TodoList'
 import './App.css';
 
-function App() {
+export function App() {
   const [todos, setTodos] = useState<Todo[]>([]);
 
   const addTodo = (text: string) => {
@@ -34,6 +35,7 @@ function App() {
 
   return (
     <div className="App">
+      
       <NewTodoForm
         handleClick={addTodo}
       />
@@ -42,4 +44,32 @@ function App() {
   );
 }
 
-export default App;
+// export default App;
+
+
+type AppProps = {
+  title: string;
+};
+type AppState = {
+  count: number;
+};
+
+export class App2 extends React.Component<AppProps, AppState> {
+  state = {
+    count: 0
+  };
+
+  increment = () => {
+    this.setState({ count: this.state.count + 1 });
+  };
+
+  render() {
+    return (
+      <div className="App">
+        <h1>{this.props.title}</h1>
+        <h2>{this.state.count}</h2>
+        <button onClick={this.increment}>+</button>
+      </div>
+    );
+  }
+}
