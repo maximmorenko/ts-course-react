@@ -9,7 +9,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <App title="React + TS" />
-    <App2 title="React + TS" />
+    <App />
+    <App2 title="Counter" />
   </React.StrictMode>
 );

@@ -35,7 +35,7 @@ export function App() {
 
   return (
     <div className="App">
-      
+      <h1>Todo List</h1>
       <NewTodoForm
         handleClick={addTodo}
       />
@@ -63,12 +63,17 @@ export class App2 extends React.Component<AppProps, AppState> {
     this.setState({ count: this.state.count + 1 });
   };
 
+  decrement = () => {
+    this.setState({ count: this.state.count - 1 });
+  };
+
   render() {
     return (
       <div className="App">
         <h1>{this.props.title}</h1>
         <h2>{this.state.count}</h2>
         <button onClick={this.increment}>+</button>
+        <button onClick={this.decrement}>-</button>
       </div>
     );
   }
